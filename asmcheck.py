@@ -203,6 +203,20 @@ if __name__ == "__main__":
     #      [0, 0, 0, 1, 0],
     #      [0, 1, 0, -1, 1],
     #      [0, 0, 0, 1, 0]]
+    # a = [[0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+    #      [1, -1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+    #      [0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+    #      [0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+    #      [0, 0, 0, 1, -1, 1, 0, 0, 0, 0, 0, 0, 0, 0],
+    #      [0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+    #      [0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0],
+    #      [0, 0, 0, 0, 0, 0, 1, -1, 1, 0, 0, 0, 0, 0],
+    #      [0, 0, 0, 0, 0, 0, 0, 1, -1, 1, 0, 0, 0, 0],
+    #      [0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0],
+    #      [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0],
+    #      [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, -1, 1, 0],
+    #      [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, -1, 1],
+    #      [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0]]
     if main.datasum(np.matrix(a)):
         k, free = asmcheck(a)
         iso = 0
@@ -213,6 +227,7 @@ if __name__ == "__main__":
             combarr.append([r, c, t, comb, len(matcomb[i]), False])
         isogroup = []
         for i in range(0, len(matcomb)):
+            iso = 0
             if not combarr[i][5]:
                 for j in range(i + 1, len(matcomb)):
                     if combarr[i][4] == combarr[j][4] and (
@@ -229,7 +244,7 @@ if __name__ == "__main__":
                                 break
                 isogroup.append(iso)
 
-        print("ISOMORPHIC BLOCKS: ", iso)
+        print("ISOMORPHIC BLOCKS: ", isogroup)
         rct = 1
         for i in range(0, len(combarr)):
             rct *= combarr[i][0] * combarr[i][1] * combarr[i][2]
